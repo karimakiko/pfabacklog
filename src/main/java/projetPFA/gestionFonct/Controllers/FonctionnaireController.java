@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.WhereJoinTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projetPFA.gestionFonct.Fonctionnaire;
 import projetPFA.gestionFonct.Services.FonctionnaireService;
@@ -47,7 +48,10 @@ public class FonctionnaireController {
     public Fonctionnaire getFonctById(@PathVariable("cin") String cin){
         return fonctionnaireService.getFonctById(cin);
     }
-
+    @PutMapping(path="api/info/update/{cin}")
+    public ResponseEntity<Fonctionnaire> updateFonct(@PathVariable("cin") String cin, @RequestBody Fonctionnaire fonctionnaire){
+        Fonctionnaire updatedFonctionnaire = fonctionnaireService.updateFonct(cin,fonctionnaire);
+        return ResponseEntity.ok(updatedFonctionnaire);    }
     @DeleteMapping(path="api/info/delete/{cin}")
     public void deleteFonct(@PathVariable("cin") String cin){
         fonctionnaireService.deleteFonct(cin);

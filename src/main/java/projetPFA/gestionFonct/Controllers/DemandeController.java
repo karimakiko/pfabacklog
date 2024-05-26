@@ -52,4 +52,19 @@ public class DemandeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> countdemande() {
+        long count = demandeservice.countdemandes();
+        return ResponseEntity.ok(count);
+    }
+    @GetMapping("/{code}")
+    public ResponseEntity<Demande_absence> getDemandByCode(@PathVariable String code) {
+        Demande_absence demand = demandeservice.getDemandByCode(code);
+        if (demand != null) {
+            return new ResponseEntity<>(demand, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }}
+
 }

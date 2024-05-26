@@ -37,7 +37,7 @@ public class Fonctionnaire {
     private String adresse;
     private String numeroTel;
     private String email;
-    private int soldeAbsence;
+    private  int SoldeAbsence=22;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "infofam_id", referencedColumnName = "id")
     private InfoFamiliales infoFamiliales;
@@ -56,28 +56,28 @@ public class Fonctionnaire {
     @JoinColumn(name = "infoassur_id", referencedColumnName = "id") //la colomne ou va etre la cle etrngere de infoassurance
     private InfoAssurance infoAssurance;
 
+
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fonctionnaire_id", referencedColumnName = "cin")
+    @JoinColumn (name="fonctionnaire_id",referencedColumnName = "cin")
     private List<Notations> notations;
     //@OneToMany(mappedBy = "fonctionnaire")
     // private List<FormationContinue> formationsContinues;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fonctionnaire_id", referencedColumnName = "cin")
+    @JoinColumn (name="fonctionnaire_id",referencedColumnName = "cin")
     private List<Diplomes> diplomes;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fonctionnaire_id", referencedColumnName = "cin")
+    @JoinColumn (name="fonctionnaire_id",referencedColumnName = "cin")
     private List<Mouvements> mouvements;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fonctionnaire_id", referencedColumnName = "cin")
+    @JoinColumn (name="fonctionnaire_id",referencedColumnName = "cin")
     private List<Affectations> affectations;
     //@OneToMany(mappedBy = "fonctionnaire")
     //private List<AutorisationAbsence> autorisationsAbsences;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fonctionnaire_id", referencedColumnName = "cin")
+    @JoinColumn (name="fonctionnaire_id",referencedColumnName = "cin")
     private List<Sanctions> sanctions;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fonctionnaire_id", referencedColumnName = "cin")
+    @JoinColumn (name="fonctionnaire_id",referencedColumnName = "cin")
     private List<DocumentPieceJointe> documentsPiecesJointes;
-    @OneToMany(mappedBy = "fonctionnaire")
-    private List<Demande_absence> demandesAbsence;
+
 }

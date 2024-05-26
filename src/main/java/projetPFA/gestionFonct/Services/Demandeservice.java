@@ -4,23 +4,31 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetPFA.gestionFonct.Demande_absence;
+import projetPFA.gestionFonct.Fonctionnaire;
 import projetPFA.gestionFonct.Repositories.DemandeRepository;
+import projetPFA.gestionFonct.Repositories.FonctionnaireRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @Service
 public class Demandeservice {
     private DemandeRepository demandeRepository;
-
+    private FonctionnaireRepository fonctionnaireRepository;
     @Autowired
     public Demandeservice(DemandeRepository demandeRepository) {
         this.demandeRepository = demandeRepository;
     }
 
+
+
     public void ajouterdemande(Demande_absence demande) {
         this.demandeRepository.save(demande);
+
     }
+
+
 
     public List<Demande_absence> affichertousdemande() {
         return this.demandeRepository.findAll();
@@ -63,4 +71,11 @@ public class Demandeservice {
             return null;
         }
     }
+    public Demande_absence getDemandByCode(String code) {
+        return demandeRepository.findByCode(code);
+    }
+    public long countdemandes() {
+        return demandeRepository.count();
+    }
+
 }
